@@ -32,14 +32,12 @@ public class FrontControllerServlet2 extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String requestURI = request.getRequestURI();
-
         ControllerV2 controller = controllerMap.get(requestURI);
         if(controller == null){
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
-
         }
-      MyView myView = controller.process(request, response);
+        MyView myView = controller.process(request, response);
         myView.render(request, response);
     }
 }
